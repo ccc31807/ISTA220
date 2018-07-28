@@ -1,4 +1,4 @@
-# ISTA220 - Programming ih C#
+# ISTA220 - Programming in C#
 
 ## Charles Carter
 
