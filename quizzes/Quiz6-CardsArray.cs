@@ -12,7 +12,7 @@ namespace Cards_console
             int[] Cards = InitializeDeck();
             string Hands = "";
 
-            Console.Write("\nEnter [1] for colution 1, [2] for solution 2: ");
+            Console.Write("\nEnter [1] for solution 1, [2] for solution 2: ");
             string choice = Console.ReadLine();
             if (choice == "1")
             {
@@ -60,6 +60,7 @@ namespace Cards_console
         private static string Solution2(int[] Cards)
         {
             //SOLUTION 2    
+            //DEBUGGING
             //Console.WriteLine("Before randamization"); foreach(int c in Cards) Console.Write($"{c} ");
             StringBuilder shuffled = new StringBuilder();
             Random r = new Random();
@@ -70,6 +71,7 @@ namespace Cards_console
                 Cards[i] = Cards[newI];
                 Cards[newI] = temp;
             }
+            //DEBUGGING
             //Console.WriteLine("After randamization"); foreach(int c in Cards) Console.Write($"{c} ");
             for (int i = 0; i < 52; i++)
             {
@@ -85,21 +87,15 @@ namespace Cards_console
             int[] Cards = new int[52]; //declare array
             for (int i = 0; i < 52; i++) //initialize array
                 Cards[i] = i;
-            Console.WriteLine();
-            for (int i = 0; i < 52; i++) //print the new deck
-                Console.Write(PrintCard(i, ", "));
+            //DEBUGGING
+            //for (int i = 0; i < 52; i++) Console.Write(PrintCard(i, ", "));
             return Cards;
         }
 
         private static string PrintHand(int deck)
         {
-            string hand;
-            if (deck % 4 == 0) hand = "  ~~North~~  ";
-            else if (deck % 4 == 1) hand = "  ~~East~~  ";
-            else if (deck % 4 == 2) hand = "  ~~South~~  ";
-            else if (deck % 4 == 3) hand = "  ~~West~~  ";
-            else hand = "ERROR in PrintHand()";
-            return hand;
+            string[] hand = {" ~~North~~ ",  " ~~East~~ ",  " ~~South~~ ",  " ~~West~~ ",  };
+            return hand[deck % 4];
         }
 
         private static string PrintCard(int i, string cr = "")
@@ -107,8 +103,7 @@ namespace Cards_console
             string[] value = {"two","three","four","five","six","seven","eight","nine",
                 "ten","Jack","Queen","King","Ace"};
             string[] suit = { "Clubs", "Diamonds", "Hearts", "Spades" };
-            string card = $"{value[i % 13]} of {suit[i / 13]}{cr}";
-            return card;
+            return $"{value[i % 13]} of {suit[i / 13]}{cr}";
         }
     }
 }
